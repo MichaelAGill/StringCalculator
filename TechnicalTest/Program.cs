@@ -4,8 +4,12 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        Calculator calculator = new Calculator();
+        var delimiterFinder = new DelimiterFinder();
+        var parser = new NumberParser();
+        var calculator = new Calculator(delimiterFinder, parser);
         
+
+        // Deprecated, now that the Unit Tests work.
         PrintSum(calculator, "");
         PrintSum(calculator, "0");
         PrintSum(calculator, "1");
@@ -17,6 +21,7 @@ internal class Program
         PrintSum(calculator, "//%5%6%7%8%9%10");
         PrintSum(calculator, "//[#]1#2,3\n4");
         PrintSum(calculator, "//[¬][&][£]1¬2&3£4");
+        PrintSum(calculator, "//[¬¬¬]1¬¬¬2¬¬¬3¬¬¬4");
     }
 
     static void PrintSum(Calculator calculator, string stringOfNumbers)
