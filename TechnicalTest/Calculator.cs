@@ -1,10 +1,11 @@
-﻿namespace TechnicalTest
+﻿using Shared;
+
+namespace TechnicalTest
 {
     public class Calculator
     {
 
         private readonly string[] _defaultDelimiters = { ",", "\n" };
-        private readonly string _regexPattern = @"\[(.*?)\]";
         private readonly IDelimiterFinder _delimiterFinder;
         private readonly IParser _parser;
 
@@ -31,7 +32,7 @@
 
                 // We can add our new string[] of additional delimiters to our pre existing string[] of delimiters.
                 delimiters = delimiters.Concat(additionalDelimiters).ToArray();
-                numbers = Regex.Replace(numbers, _regexPattern, "").Replace("//", "");
+                numbers = Regex.Replace(numbers, RegexPatterns._regexPattern, "").Replace("//", "");
             }
 
             var nums = _parser.Parse(numbers, delimiters);

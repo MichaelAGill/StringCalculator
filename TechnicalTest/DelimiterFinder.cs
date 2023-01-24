@@ -1,13 +1,14 @@
-﻿namespace TechnicalTest
+﻿using Shared;
+
+namespace TechnicalTest
 {
     public class DelimiterFinder : IDelimiterFinder
     {
-        private readonly string _regexPattern = @"\[(.*?)\]";
         public string[] GetDelimiters(string input)
         {
             if (input.Contains("["))
             {
-                MatchCollection matches = Regex.Matches(input, _regexPattern);
+                MatchCollection matches = Regex.Matches(input, RegexPatterns._regexPattern);
                 return matches.Cast<Match>().Select(m => m.Groups[1].Value).ToArray();
             }
 
