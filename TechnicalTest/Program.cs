@@ -7,7 +7,7 @@ internal class Program
         var delimiterFinder = new DelimiterFinder();
         var parser = new NumberParser();
         var calculator = new Calculator(delimiterFinder, parser);
-        
+
 
         // Deprecated, now that the Unit Tests work.
         PrintSum(calculator, "");
@@ -26,6 +26,6 @@ internal class Program
 
     static void PrintSum(Calculator calculator, string stringOfNumbers)
     {
-        Console.WriteLine($"The sum of '{ stringOfNumbers.Replace("\n", "\\n") }' is: { calculator.Add(stringOfNumbers) }");
+        Console.WriteLine($"The sum of '{stringOfNumbers.Replace("\n", "\\n")}' is: {calculator.Add(stringOfNumbers)}");
     }
 }

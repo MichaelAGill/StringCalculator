@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
-namespace TechnicalTest
+﻿namespace TechnicalTest
 {
     public class Calculator
     {
@@ -21,7 +14,7 @@ namespace TechnicalTest
             _parser = parser;
         }
 
-        public int Add(string numbers) 
+        public int Add(string numbers)
         {
 
             if (string.IsNullOrEmpty(numbers))
@@ -35,7 +28,7 @@ namespace TechnicalTest
             {
 
                 var additionalDelimiters = _delimiterFinder.GetDelimiters(numbers);
-                
+
                 // We can add our new string[] of additional delimiters to our pre existing string[] of delimiters.
                 delimiters = delimiters.Concat(additionalDelimiters).ToArray();
                 numbers = Regex.Replace(numbers, _regexPattern, "").Replace("//", "");
@@ -47,7 +40,7 @@ namespace TechnicalTest
             if (negatives.Any())
             {
                 //This is how to throw the requested exception. But I will return -1 to keep the program running.
-                throw new Exception($"negatives not allowed: { string.Join(",", negatives) }");
+                throw new Exception($"negatives not allowed: {string.Join(",", negatives)}");
             }
 
             // We simply return the sum of all the `nums` that are less than 1000.
